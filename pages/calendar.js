@@ -97,7 +97,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
 
-const calendar = () => {
+const Calendar = () => {
   let today = startOfToday()
   let [selectedDay, setSelectedDay] = useState(today)
   let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
@@ -320,4 +320,4 @@ let colStartClasses = [
 'col-start-7',
 ]
 
-export default calendar
+export default Calendar
