@@ -1,13 +1,14 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Nav = () => {
   return (
     <nav className="px-2 sm:px-4 py-2.5 bg-white shadow-sm shadow-slate-300">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <a href="https://flowbite.com" className="flex items-center">
-            <img src="./vercel.svg" className="mr-3 h-4 sm:h-4" alt="Flowbite Logo" />
+        <div className="flex items-center mr-3">
+            <Image src="/vercel.svg" width="80px" height="40px" objectFit="contain" alt="Flowbite Logo" />
             {/* <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> */}
-        </a>
+        </div>
         <div className="flex md:order-2">
             <button type="button" className="text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-3 md:mr-0 duration-500">Get started</button>
             <button data-collapse-toggle="mobile-menu-4" type="button" className="inline-flex items-center p-2 text-sm text-gray-900 rounded-full md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 duration-500" aria-controls="mobile-menu-4" aria-expanded="false">
@@ -19,19 +20,19 @@ const Nav = () => {
         <div className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-4">
           <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
             <li className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500" aria-current="page">
-              <Link href="#">
+              <Link href="/">
                 Home
               </Link>
             </li>
             <li className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500">
-              <Link href="#">About</Link>
+              <Link href="/calendar">Calendar</Link>
             </li>
-            <li className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500">
+            {/* <li className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500">
               <Link href="#">Services</Link>
             </li>
             <li className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500">
               <Link href="#">Contact</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
