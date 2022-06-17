@@ -6,7 +6,6 @@ export default function Home() {
       <Head>
         <title>NextJS Title</title>
       </Head>
-      <h1 className="text-green-500">Welcome to next</h1>
     </div>
   )
 }
