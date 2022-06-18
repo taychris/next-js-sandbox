@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Disclosure, Transition } from '@headlessui/react'
+// import { Disclosure, Transition } from '@headlessui/react'
 import { useState } from 'react'
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="px-2 sm:px-4 py-2.5 bg-white shadow-sm shadow-slate-300">
+    <nav className="px-2 sm:px-4 py-2.5 bg-white shadow-sm shadow-slate-300 relative">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <div className="flex items-center mr-3">
             <Image src="/vercel.svg" width="80px" height="40px" objectFit="contain" alt="Flowbite Logo" />
@@ -22,27 +22,14 @@ const Nav = () => {
             </button>
         </div>
         {/* Desktop menu items */}
-        <div className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-4">
-          <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+        <div className={`${isOpen ? "!left-[0%]" : ""} flex justify-center items-center w-full absolute top-[60px] left-[100%] bg-white shadow-sm shadow-slate-300 duration-500 md:shadow-none md:w-auto md:order-1 md:justify-start md:relative md:top-auto md:left-auto`} id="mobile-menu-4">
+          <ul className="flex flex-col mt-4 w-min text-center md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:text-left">
             <li className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500" aria-current="page">
               <Link href="/">
                 Home
               </Link>
             </li>
             <li className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500">
-              <Link href="/calendar">Calendar</Link>
-            </li>
-          </ul>
-        </div>
-        {/* mobile menu items */}
-        <div className={`${isOpen ? "right-[0px]" : "right-[-999px] " } flex justify-end items-center w-full absolute bg-white top-[60px] md:hidden duration-500`} id="mobile-menu-4">
-          <ul className="flex flex-col mt-4 text-right">
-            <li className="py-2 pr-4 pl-3 font-medium text-gray-800 hover:text-gray-600 duration-500" aria-current="page">
-              <Link href="/">
-                Home
-              </Link>
-            </li>
-            <li className="py-2 pr-4 pl-3 font-medium text-gray-800 hover:text-gray-600 duration-500">
               <Link href="/calendar">Calendar</Link>
             </li>
           </ul>
