@@ -16,6 +16,7 @@ import {
     startOfToday,
   } from 'date-fns'
 import { useState } from 'react'
+import BookingForm from '../components/BookingForm'
 import BookingItem from '../components/BookingItem'
 
 const meetings = [
@@ -101,6 +102,8 @@ const Calendar = () => {
   let today = startOfToday()
   let [selectedDay, setSelectedDay] = useState(today)
   let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
+  let [isBookingSelected, setIsBookingSelected] = useState(false)
+  let [bookingItemSelected, setBookingItemSelected] = useState({})
   let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
 
   let days = eachDayOfInterval({
@@ -118,13 +121,22 @@ const Calendar = () => {
     setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'))
   }
 
+  function showForm(meeting) {
+    setIsBookingSelected(true)
+    setBookingItemSelected(meeting)
+  }
+
+  function toSummary(formInformation) {
+    console.log(formInformation);
+  }
+
   let selectedDayMeetings = meetings.filter((meeting) =>
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   )
 
   return (
     <div className="py-16">
-      <div className="max-w-md px-4 mx-auto sm:px-7 md:max-w-4xl md:px-6">
+      <div className="max-w-md px-4 mx-auto mb-10 sm:px-7 md:max-w-4xl md:px-6">
         <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200">
           <div className="md:pr-14">
             <div className="flex items-center">
@@ -168,7 +180,11 @@ const Calendar = () => {
                 >
                   <button
                     type="button"
-                    onClick={() => setSelectedDay(day)}
+                    onClick={() => {
+                      setSelectedDay(day)
+                      setIsBookingSelected(false)
+                      setBookingItemSelected({})
+                    }}
                     className={classNames(
                       isEqual(day, selectedDay) && 'text-white',
                       !isEqual(day, selectedDay) &&
@@ -218,7 +234,7 @@ const Calendar = () => {
             <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500 max-h-80 overflow-y-auto">
               {selectedDayMeetings.length > 0 ? (
                 selectedDayMeetings.map((meeting) => (
-                  <BookingItem meeting={meeting} key={meeting.id} />
+                  <BookingItem meeting={meeting} parentResponse={showForm} key={meeting.id} />
                 ))
               ) : (
                 <p>No bookings available for today.</p>
@@ -227,6 +243,7 @@ const Calendar = () => {
           </section>
         </div>
       </div>
+      {isBookingSelected ? <BookingForm formInformation={toSummary} /> : null}
     </div>
   )
 }

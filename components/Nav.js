@@ -1,10 +1,19 @@
 import Link from 'next/link'
 import Image from 'next/image'
 // import { Disclosure, Transition } from '@headlessui/react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const Nav = () => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+
+  // When user clicks on a menu item, close the menu
+  useEffect(() => {
+    if(isOpen) {
+      setIsOpen(!isOpen);
+    }
+  }, [router.asPath])
 
   return (
     <nav className="px-2 sm:px-4 py-2.5 bg-white shadow-sm shadow-slate-300 fixed top-0 left-0 w-full">
