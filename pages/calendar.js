@@ -208,14 +208,14 @@ const Calendar = () => {
               ))}
             </div>
           </div>
-          <section className="mt-12 max-h-96 md:mt-0 md:pl-14 overflow-y-auto">
+          <section className="mt-12 md:mt-0 md:pl-14">
             <h2 className="font-semibold text-gray-900">
               Schedule for{' '}
               <time dateTime={format(selectedDay, 'yyyy-MM-dd')}>
                 {format(selectedDay, 'MMM dd, yyy')}
               </time>
             </h2>
-            <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
+            <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500 max-h-80 overflow-y-auto">
               {selectedDayMeetings.length > 0 ? (
                 selectedDayMeetings.map((meeting) => (
                   <BookingItem meeting={meeting} key={meeting.id} />

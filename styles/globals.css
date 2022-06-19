@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar {
+  width: 1vw;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: rgb(94, 94, 94);
+}
+
+html::-webkit-scrollbar-track {
+  background-color: gray;
+}
+
 body {
     overflow-x: hidden;
 }

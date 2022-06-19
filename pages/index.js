@@ -1,11 +1,11 @@
-import Head from 'next/head'
+
 
 export default function Home() {
   return (
-    <div>
-      <Head>
-        <title>NextJS Title</title>
-      </Head>
-    </div>
+    <>
+      <div className="flex justify-center items-center min-h-screen">
+        <h1>Home page</h1>
+      </div>
+    </>
   )
 }

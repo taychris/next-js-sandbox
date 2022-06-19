@@ -4,11 +4,9 @@ const Layout = ({ children }) => {
   return (
     <>
     <Nav />
-    <div>
-        <main>
-            {children}
-        </main>
-    </div>
+    <main className="mt-[60px]">
+        {children}
+    </main>
     </>
   )
 }
