@@ -31,7 +31,7 @@ const Nav = () => {
             </button>
         </div>
         {/* Desktop menu items */}
-        <div className={`${isOpen ? "!left-[0%]" : ""} flex justify-center items-center w-full fixed top-[60px] left-[100%] bg-white shadow-sm shadow-slate-300 duration-500 md:shadow-none md:w-auto md:order-1 md:justify-start md:relative md:top-auto md:left-auto`} id="mobile-menu-4">
+        <div className={`${isOpen ? "!left-[0%]" : ""} flex !z-[99999] justify-center items-center w-full fixed top-[60px] left-[100%] bg-white shadow-sm shadow-slate-300 duration-500 md:shadow-none md:w-auto md:order-1 md:justify-start md:relative md:top-auto md:left-auto`} id="mobile-menu-4">
           <ul className="flex flex-col mt-4 w-min text-center md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:text-left">
             <li className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500" aria-current="page">
               <Link href="/">

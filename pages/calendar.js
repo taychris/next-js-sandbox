@@ -15,9 +15,10 @@ import {
     parseISO,
     startOfToday,
   } from 'date-fns'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import BookingForm from '../components/BookingForm'
 import BookingItem from '../components/BookingItem'
+import { useRouter } from 'next/router';
 
 const meetings = [
 {
@@ -105,6 +106,14 @@ const Calendar = () => {
   let [isBookingSelected, setIsBookingSelected] = useState(false)
   let [bookingItemSelected, setBookingItemSelected] = useState({})
   let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
+  const router = useRouter();
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if(bookingItemSelected) {
+      ref.current?.scrollIntoView({behavior: 'smooth'});
+    }
+  }, [bookingItemSelected])
 
   let days = eachDayOfInterval({
     start: firstDayCurrentMonth,
@@ -127,7 +136,15 @@ const Calendar = () => {
   }
 
   function toSummary(formInformation) {
-    console.log(formInformation);
+    let formData = {
+      formData: formInformation
+    }
+    let data = {...formData, bookingItemSelected}
+
+    router.push(
+      { pathname: "/summary", query: { data: JSON.stringify(data) } },
+      "/summary"
+    );
   }
 
   let selectedDayMeetings = meetings.filter((meeting) =>
@@ -243,7 +260,7 @@ const Calendar = () => {
           </section>
         </div>
       </div>
-      {isBookingSelected ? <BookingForm formInformation={toSummary} /> : null}
+      {isBookingSelected && <div ref={ref}><BookingForm formInformation={toSummary}/></div>}
     </div>
   )
 }
