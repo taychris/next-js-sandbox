@@ -21,3 +21,21 @@ html::-webkit-scrollbar-track {
 body {
     overflow-x: hidden;
 }
+
+.calculated-min-h-screen {
+  min-height: calc(100vh - 88px);
+}
+
+.calculated-h-screen {
+  height: calc(100vh - 88px);
+}
+
+@media only screen and (max-width: 768px) {
+  .calculated-min-h-screen {
+    min-height: calc(80vh - 88px);
+  }
+  
+  .calculated-h-screen {
+    height: calc(80vh - 88px);
+  }
+}

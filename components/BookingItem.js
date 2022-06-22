@@ -20,7 +20,7 @@ const BookingItem = ({meeting, parentResponse, bgColor}) => {
                 {format(endDateTime, 'h:mm a')}
                 </time>
             </p>
-            <button className={`${bgColor} hover:opacity-70 hover:scale-105 text-white py-1 px-4 rounded-full duration-500 mb-1`} onClick={() => {
+            <button className={`${bgColor} hover:opacity-80 text-white py-1 px-4 rounded-full duration-500 mb-1`} onClick={() => {
               parentResponse(meeting)
             }}>
                 Book now.

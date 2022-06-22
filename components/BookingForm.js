@@ -21,7 +21,7 @@ const BookingForm = ({ formInformation, bgColor }) => {
 
   return (
     <div className="max-w-md px-4 mx-auto mb-10 sm:px-7 md:max-w-4xl md:px-6 flex items-center justify-center flex-col">
-        <h2 className="my-10 text-left w-full font-semibold text-gray-900">We need your contact information.</h2>
+        <h2 className="py-10 text-left w-full font-semibold text-gray-900">We need your contact information.</h2>
         <form className="flex w-full flex-col items-center justify-center" onSubmit={handleSubmit}>
             <div className="w-full flex justify-start flex-col md:justify-between md:flex-row">
                 <div className="w-full md:w-[45%] group duration-500 p-5 mb-6 rounded-md hover:bg-slate-100 hover:shadow-md hover:shadow-slate-200">
@@ -47,7 +47,7 @@ const BookingForm = ({ formInformation, bgColor }) => {
                 <label className="w-full text-left font-light text-gray-800 text-base tracking-wide" htmlFor="message">Message:</label>
                 <textarea className="w-full border-b bg-transparent text-gray-800 duration-500 hover:border-b-slate-900 focus:border-b-slate-900 focus:outline-none active:outline-none" name="message" cols="20" rows="5" onChange={handleChange}></textarea>
             </div>
-            <button className={`rounded-full ${bgColor} py-2 px-8 capitalize text-white text-base duration-500 hover:opacity-70  hover:scale-105`} type="submit">Next.</button>
+            <button className={`rounded-full ${bgColor} py-2 px-8 capitalize text-white text-base duration-500 shadow-md shadow-slate-50 hover:shadow-slate-400  hover:scale-105`} type="submit">Next.</button>
         </form>
     </div>
   )
