@@ -15,7 +15,7 @@ const Booking = () => {
             <div className="w-full h-screen md:w-1/2 text-slate-800 flex items-center justify-center flex-col">
                 <div className="w-2/3 h-full flex flex-col justify-center">
                 <h1 className="font-normal text-6xl mb-10"><span className="font-bold text-6xl">demko</span><br/> barber.</h1>
-                <p className="text-3xl mb-10">I'm the best barber from mars. Currently working with scissors and stuff.</p>
+                <p className="text-3xl mb-10">{"I'm the best barber from mars. Currently working with scissors and stuff."}</p>
                 <div>
                    <Link href={`/booking/${slug}/calendar`}>
                         <button className="bg-red-400 text-white px-10 py-3 rounded-full text-lg shadow-md shadow-slate-50 hover:shadow-slate-400 hover:scale-105 duration-500">Booking.</button>
