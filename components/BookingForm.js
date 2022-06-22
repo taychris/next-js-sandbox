@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BookingForm = ({ formInformation }) => {
+const BookingForm = ({ formInformation, bgColor }) => {
   const [state, setState ] = useState({
     firstName: '',
     lastName: '',
@@ -47,7 +47,7 @@ const BookingForm = ({ formInformation }) => {
                 <label className="w-full text-left font-light text-gray-800 text-base tracking-wide" htmlFor="message">Message:</label>
                 <textarea className="w-full border-b bg-transparent text-gray-800 duration-500 hover:border-b-slate-900 focus:border-b-slate-900 focus:outline-none active:outline-none" name="message" cols="20" rows="5" onChange={handleChange}></textarea>
             </div>
-            <button className="rounded-full bg-gray-900 py-2 px-8 capitalize text-white text-base duration-500 hover:bg-slate-700" type="submit">Next.</button>
+            <button className={`rounded-full ${bgColor} py-2 px-8 capitalize text-white text-base duration-500 hover:opacity-70  hover:scale-105`} type="submit">Next.</button>
         </form>
     </div>
   )

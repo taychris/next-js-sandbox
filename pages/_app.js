@@ -1,6 +1,7 @@
-import Layout from '../components/Layout' 
 import '../styles/globals.css'
+import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
+import Nav from '../components/Nav'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -8,9 +9,12 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>NextJS Title</title>
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Nav />
+      <AnimatePresence exitBeforeEnter
+                initial={false}
+                onExitComplete={() => window.scrollTo(0, 0)}>
+          <Component {...pageProps} />
+      </AnimatePresence>
     </>
   )
 }

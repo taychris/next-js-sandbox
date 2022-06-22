@@ -4,7 +4,7 @@ import {
   } from 'date-fns'
 import { useState } from 'react'
 
-const BookingItem = ({meeting, parentResponse}) => {
+const BookingItem = ({meeting, parentResponse, bgColor}) => {
     let startDateTime = parseISO(meeting.startDatetime)
     let endDateTime = parseISO(meeting.endDatetime)
   
@@ -20,7 +20,7 @@ const BookingItem = ({meeting, parentResponse}) => {
                 {format(endDateTime, 'h:mm a')}
                 </time>
             </p>
-            <button className="bg-gray-900 hover:bg-gray-700 text-white py-1 px-4 rounded-full duration-500 mb-1" onClick={() => {
+            <button className={`${bgColor} hover:opacity-70 hover:scale-105 text-white py-1 px-4 rounded-full duration-500 mb-1`} onClick={() => {
               parentResponse(meeting)
             }}>
                 Book now.

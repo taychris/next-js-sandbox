@@ -16,10 +16,12 @@ import {
     startOfToday,
   } from 'date-fns'
 import { useState, useRef, useEffect } from 'react'
-import BookingForm from '../components/BookingForm'
-import BookingItem from '../components/BookingItem'
+import BookingForm from '../../../../components/BookingForm'
+import BookingItem from '../../../../components/BookingItem'
 import { useRouter } from 'next/router';
-import Layout from '../components/Layout' 
+import Layout from '../../../../components/Layout' 
+import Link from 'next/link'
+import BookingNav from '../../../../components/BookingNav'
 
 const meetings = [
 {
@@ -107,8 +109,10 @@ const Calendar = () => {
   let [isBookingSelected, setIsBookingSelected] = useState(false)
   let [bookingItemSelected, setBookingItemSelected] = useState({})
   let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
-  const router = useRouter();
-  const ref = useRef(null);
+  const router = useRouter()
+  const { slug } = router.query
+  const ref = useRef(null)
+  const bgColor = "bg-red-400"
 
   useEffect(() => {
     if(bookingItemSelected) {
@@ -138,7 +142,8 @@ const Calendar = () => {
 
   function toSummary(formInformation) {
     let formData = {
-      formData: formInformation
+      formData: formInformation,
+      slug: slug
     }
     let data = {...formData, bookingItemSelected}
 
@@ -154,7 +159,8 @@ const Calendar = () => {
 
   return (
     <Layout>
-      <div className="py-16 mt-[60px]">
+      <BookingNav slug={slug}/>
+      <div className="py-16">
         <div className="max-w-md px-4 mx-auto mb-10 sm:px-7 md:max-w-4xl md:px-6">
           <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200">
             <div className="md:pr-14">
@@ -208,7 +214,7 @@ const Calendar = () => {
                         isEqual(day, selectedDay) && 'text-white',
                         !isEqual(day, selectedDay) &&
                           isToday(day) &&
-                          'text-red-500',
+                          'text-red-400',
                         !isEqual(day, selectedDay) &&
                           !isToday(day) &&
                           isSameMonth(day, firstDayCurrentMonth) &&
@@ -217,7 +223,7 @@ const Calendar = () => {
                           !isToday(day) &&
                           !isSameMonth(day, firstDayCurrentMonth) &&
                           'text-gray-400',
-                        isEqual(day, selectedDay) && isToday(day) && 'bg-red-500',
+                        isEqual(day, selectedDay) && isToday(day) && bgColor,
                         isEqual(day, selectedDay) &&
                           !isToday(day) &&
                           'bg-gray-900',
@@ -253,7 +259,7 @@ const Calendar = () => {
               <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500 max-h-80 overflow-y-auto">
                 {selectedDayMeetings.length > 0 ? (
                   selectedDayMeetings.map((meeting) => (
-                    <BookingItem meeting={meeting} parentResponse={showForm} bgColor={"bg-gray-900"} key={meeting.id} />
+                    <BookingItem meeting={meeting} parentResponse={showForm} bgColor={bgColor} key={meeting.id} />
                   ))
                 ) : (
                   <p>No bookings available for today.</p>
@@ -262,7 +268,7 @@ const Calendar = () => {
             </section>
           </div>
         </div>
-        {isBookingSelected && <div ref={ref}><BookingForm formInformation={toSummary} bgColor={"bg-gray-900"}/></div>}
+        {isBookingSelected && <div ref={ref}><BookingForm formInformation={toSummary} bgColor={bgColor}/></div>}
       </div>
     </Layout>
   )
