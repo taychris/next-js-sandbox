@@ -37,7 +37,7 @@ const Index = () => {
                 <ChevronLeftIcon className="absolute top-1/2 w-14 h-14 cursor-pointer hover:opacity-70 duration-500" aria-hidden="true" style={{"transform": "translateY(-50%)"}}/>
               </Link>
               <div className="w-[100%] relative h-[150px] flex justify-center items-center mb-10 -z-10 md:pr-16 md:justify-end md:w-[40%] md:h-[250px] md:mb-0">
-                  <Image src="/imgs/success_check.png" layout='fill' objectFit='contain' className='!relative'/>
+                  <Image src="/imgs/success_check.png" layout='fill' objectFit='contain' className='!relative' alt="Success check mark"/>
               </div>
               <div className="flex flex-col w-[100%] md:w-[60%]">
                   <h1 className="text-5xl w-full font-medium text-slate-700 mb-10">Your booking summary.</h1>

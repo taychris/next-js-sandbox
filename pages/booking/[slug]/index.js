@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import Layout from '../../../components/Layout'
 import BookingNav from '../../../components/BookingNav'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Booking = () => {
   const router = useRouter()
@@ -22,8 +23,8 @@ const Booking = () => {
                 </div>
                 </div>
             </div>
-            <div className="w-full md:w-1/2">
-                <img className="h-full object-cover" src="https://images.unsplash.com/photo-1499366440726-52cbc45a5c3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" />
+            <div className="w-full relative h-screen md:w-1/2">
+                <Image className="h-full !relative"  layout='fill' objectFit='cover' src="https://images.unsplash.com/photo-1499366440726-52cbc45a5c3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Cover Image of home page"/>
             </div>
         </div>
     </Layout>
