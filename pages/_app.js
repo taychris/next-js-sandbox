@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
 import Nav from '../components/Nav'
+import Layout from '../components/Layout'
 
 function MyApp({ Component, pageProps }) {
   return (
