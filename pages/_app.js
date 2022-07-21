@@ -3,10 +3,17 @@ import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
 import Nav from '../components/Nav'
 import Layout from '../components/Layout'
+import { AppContext } from '../lib/context'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../lib/firebase'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }) {
+  const [user] = useAuthState(auth)
+
   return (
-    <>
+    <AppContext.Provider value={{user}}>
       <Head>
         <title>NextJS Title</title>
       </Head>
@@ -16,7 +23,7 @@ function MyApp({ Component, pageProps }) {
                 onExitComplete={() => window.scrollTo(0, 0)}>
           <Component {...pageProps} />
       </AnimatePresence>
-    </>
+    </AppContext.Provider>
   )
 }
 

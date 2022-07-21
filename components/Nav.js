@@ -3,6 +3,7 @@ import Image from 'next/image'
 // import { Disclosure, Transition } from '@headlessui/react'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { auth } from '../lib/firebase'
 
 const Nav = () => {
   const router = useRouter();
@@ -52,6 +53,9 @@ const Nav = () => {
               </li>
               <li className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500">
                 <Link href="/calendar">Calendar</Link>
+              </li>
+              <li onClick={() => auth.signOut()}>
+                Logout
               </li>
             </ul>
           </div>
