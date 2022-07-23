@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import ManageCalendar from '../../../../components/Dashboard/ManageCalendar'
+import ManageCalendar from '../../../../components/dashboard/ManageCalendar'
 
 const ManageCalendarPage = () => {
   const [appointments, setAppointments] = useState([

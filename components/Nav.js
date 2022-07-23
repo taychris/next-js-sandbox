@@ -1,14 +1,16 @@
 import Link from 'next/link'
 import Image from 'next/image'
 // import { Disclosure, Transition } from '@headlessui/react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
 import { auth } from '../lib/firebase'
+import { AppContext } from '../lib/context'
 
 const Nav = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [displayDisabled, setDisplayDisabled] = useState(false)
+  const {user} = useContext(AppContext)
 
   // When user clicks on a menu item, close the menu
   useEffect(() => {
@@ -28,7 +30,7 @@ const Nav = () => {
       <nav className="px-2 sm:px-4 py-2.5 bg-white shadow-sm shadow-slate-300 fixed top-0 left-0 w-full">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
           <div className="flex items-center mr-3">
-              <Image src="/vercel.svg" width="80px" height="40px" objectFit="contain" alt="Flowbite Logo" />
+              <Image src="/imgs/logo.svg" width="80px" height="40px" objectFit="contain" alt="Booqlet Logo" />
               {/* <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> */}
           </div>
           <div className="flex md:order-2">
@@ -54,9 +56,14 @@ const Nav = () => {
               <li className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500">
                 <Link href="/calendar">Calendar</Link>
               </li>
-              <li onClick={() => auth.signOut()}>
-                Logout
-              </li>
+              {user && <>
+                <li className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500">
+                  <Link href={`/dashboard/${user.uid}`}>Dashboard</Link>
+                </li>
+                <li onClick={() => auth.signOut()} className="py-2 pr-4 pl-3 text-gray-800 hover:text-gray-600 duration-500 cursor-pointer">
+                  Logout
+                </li>
+              </>}
             </ul>
           </div>
         </div>

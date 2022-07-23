@@ -1,14 +1,24 @@
+import EditContent from "../../../../components/dashboard/EditContent"
+import EditCover from "../../../../components/dashboard/EditCover"
+import EditLogo from "../../../../components/dashboard/EditLogo"
+import Layout from "../../../../components/Layout"
+
 const ManageContent = () => {
   return (
-    <div className="py-16 mt-[60px]">
-        <h1>Manage Content</h1>
-        <form>
-            <label>Landing page title</label>
-            <input type="text" placeholder="Who is" name="firstLine"/>
-            <label>Landing page description</label>
-            <input type="text" placeholder="I am an amazing person hurray." name="landingDescription"/>
-        </form>
-    </div>
+    <Layout>
+      <section className="w-[90%] m-auto py-16 mt-[60px]">
+          <h1 className="text-6xl font-bold mb-5">Your page content.</h1>
+          <div className="flex flex-col md:flex-row">
+            <EditContent/>
+            
+            <div className="flex flex-col w-full md:w-1/2">
+              <EditLogo/>
+
+              <EditCover/>
+            </div>
+          </div>
+      </section>
+    </Layout>
   )
 }
 
