@@ -5,7 +5,7 @@ import Nav from '../components/Nav'
 import { AppContext } from '../lib/context'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../lib/firebase'
-import DashboardNav from '../components/Dashboard/DashboardNav'
+import DashboardNav from '../components/dashboard/DashboardNav'
 
 function MyApp({ Component, pageProps }) {
   const [user] = useAuthState(auth)
