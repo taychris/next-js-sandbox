@@ -77,9 +77,9 @@ const ManageCalendarPage = () => {
   }, [])
 
   return (
-    <div>
+    <>
       <ManageCalendar appointments={appointments} themeColor={themeColor}/>
-    </div>
+    </>
   )
 }
 

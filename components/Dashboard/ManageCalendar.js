@@ -33,7 +33,8 @@ const ManageCalendar = ({appointments}) => {
     let [isAppointmentSelected, setIsAppointmentSelected] = useState(null)
     let [displayAddForm, setDisplayAddForm] = useState(false)
     const router = useRouter();
-    const ref = useRef(null);
+    const editRef = useRef(null);
+    const addRef = useRef(null);
 
     let colStartClasses = [
         '',
@@ -43,14 +44,19 @@ const ManageCalendar = ({appointments}) => {
         'col-start-5',
         'col-start-6',
         'col-start-7',
-    ]    
+    ]
   
     useEffect(() => {
       if(isAppointmentSelected) {
-        console.log(isAppointmentSelected)
-        ref.current?.scrollIntoView({behavior: 'smooth'});
+        editRef.current?.scrollIntoView({behavior: 'smooth'});
       }
     }, [isAppointmentSelected])
+  
+    useEffect(() => {
+      if(displayAddForm) {
+        addRef.current?.scrollIntoView({behavior: 'smooth'});
+      }
+    }, [displayAddForm])
   
     let days = eachDayOfInterval({
       start: firstDayCurrentMonth,
@@ -192,14 +198,20 @@ const ManageCalendar = ({appointments}) => {
                       {format(selectedDay, 'MMM dd, yyy')}
                     </time>
                   </h2>
-                  <button className="ml-5 duration-500 bg-gray-800 p-2 rounded-full group" onClick={() => setDisplayAddForm(true)}>
+                  <button className="ml-5 duration-500 bg-gray-800 p-2 rounded-full group" onClick={() => {
+                      setIsAppointmentSelected(null)
+                      setDisplayAddForm(true)
+                    }}>
                     <PlusIcon className="w-4 h-4 duration-500 fill-white group-hover:scale-125"/>
                   </button>
                 </div>
                 <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500 max-h-80 overflow-y-auto pb-24">
                   {selectedDayAppointments.length > 0 ? (
                     selectedDayAppointments.map((appointment) => (
-                      <ManageBookingItem appointment={appointment} parentResponse={() => setIsAppointmentSelected(appointment)} bgColor={"bg-gray-900"} key={appointment.id} />
+                      <ManageBookingItem appointment={appointment} parentResponse={() => {
+                        setDisplayAddForm(false)
+                        setIsAppointmentSelected(appointment)
+                      }} bgColor={"bg-gray-900"} key={appointment.id} />
                     ))
                   ) : (
                     <p>No bookings available for today.</p>
@@ -211,12 +223,12 @@ const ManageCalendar = ({appointments}) => {
           </div>
 
           {isAppointmentSelected && 
-            <div ref={ref}>
+            <div ref={editRef}>
               <ManageBookingForm formInformation={handleUpdate} appointment={isAppointmentSelected}/>
             </div>
           }
           {displayAddForm && 
-            <div ref={ref}>
+            <div ref={addRef}>
               <AddBookingForm formInformation={handleSubmit}/>
             </div>
           }

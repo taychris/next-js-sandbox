@@ -17,7 +17,7 @@ const Nav = () => {
     if(isOpen) {
       setIsOpen(!isOpen);
     }
-    if(router.pathname.includes('/booking/[slug]')) {
+    if(router.pathname.includes('/booking/[slug]') || router.pathname.includes('/dashboard')) {
       setDisplayDisabled(true);
     } else {
       setDisplayDisabled(false);

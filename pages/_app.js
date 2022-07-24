@@ -5,6 +5,7 @@ import Nav from '../components/Nav'
 import { AppContext } from '../lib/context'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../lib/firebase'
+import DashboardNav from '../components/Dashboard/DashboardNav'
 
 function MyApp({ Component, pageProps }) {
   const [user] = useAuthState(auth)
@@ -14,7 +15,8 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>NextJS Title</title>
       </Head>
-      <Nav />
+      <Nav/>
+      <DashboardNav/>
       <AnimatePresence exitBeforeEnter
                 initial={false}
                 onExitComplete={() => window.scrollTo(0, 0)}>
